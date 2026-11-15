@@ -392,7 +392,7 @@ class ProjectUtils:
 
     @staticmethod
     def get_project_coverage_guidance_dir() -> str:
-        coverage_guidance_dir = os.path.join(ProjectUtils.get_project_root_dir(), "coverage_guidance")
+        coverage_guidance_dir = os.path.join(ProjectUtils.get_project_root_dir(), "coverage")
         if not os.path.exists(coverage_guidance_dir):
             os.makedirs(coverage_guidance_dir, exist_ok=True)
         return coverage_guidance_dir
@@ -559,7 +559,7 @@ class ProjectUtils:
     
     @staticmethod
     def get_project_crash_report_dir() -> str:
-        crash_report_dir = os.path.join(ProjectUtils.get_project_root_dir(), "crash_reports")
+        crash_report_dir = os.path.join(ProjectUtils.get_project_root_dir(), "crashes")
         if not os.path.exists(crash_report_dir):
             os.makedirs(crash_report_dir, exist_ok=True)
         return crash_report_dir

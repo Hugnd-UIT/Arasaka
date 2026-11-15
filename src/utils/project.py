@@ -151,13 +151,13 @@ def init_environment():
     os.makedirs(seed_dir, exist_ok=True)
     os.environ["SEED_DIR"] = seed_dir
 
-    coverage_guidance_dir = os.path.join(_project_output_dir, "coverage_guidance")
+    coverage_guidance_dir = os.path.join(_project_output_dir, "coverage")
     if os.path.exists(coverage_guidance_dir) and delete:
         shutil.rmtree(coverage_guidance_dir)
     os.makedirs(coverage_guidance_dir, exist_ok=True)
     os.environ["COVERAGE_GUIDANCE_DIR"] = coverage_guidance_dir
 
-    crash_report_dir = os.path.join(_project_output_dir, "crash_reports")
+    crash_report_dir = os.path.join(_project_output_dir, "crashes")
     if os.path.exists(crash_report_dir) and delete:
         shutil.rmtree(crash_report_dir)
     os.makedirs(crash_report_dir, exist_ok=True)

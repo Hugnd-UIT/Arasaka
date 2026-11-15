@@ -31,6 +31,8 @@ You must follow this logic flow to decide which Phase to execute:
   - **Action:** EXECUTE **PHASE 1** (Surface Coverage Exploration). This is the highest priority and the easiest to improve.
 - **Condition B:** Are most Public APIs covered (API Coverage > 90%) or hard to cover more, but specific internal logic is missed?
   - **Action:** EXECUTE **PHASE 2** (Deep Coverage Exploration).
+- **Condition C:** Have >= 2 consecutive harnesses targeting the same module or API cluster failed to meaningfully increase that module's coverage or stalled with minimal/zero progress?
+  - **Action:** Regardless of overall API Coverage, DO NOT recommend another surface harness for that stalled cluster in Phase 1. Immediately execute **PHASE 2** to pinpoint the exact `if`/state guard blocking execution before requesting the next harness.
 
 ### PHASE 1: Surface Coverage Exploration (API Utilization)
 
@@ -55,7 +57,7 @@ You must follow this logic flow to decide which Phase to execute:
 
 ### PHASE 2: Deep Coverage (Blocker Resolution)
 
-**Condition:** Overall API coverage is high enough (API Coverage >= 90%). Otherwise return to PHASE 1.
+**Condition:** Overall API coverage is high enough, OR the condition C fired for a module across >= 2 consecutive harnesses. Otherwise return to PHASE 1.
 
 **Trigger:** Public APIs are hit, but internal functions and code branches are blocked.
 

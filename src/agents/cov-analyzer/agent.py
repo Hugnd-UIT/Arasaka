@@ -67,14 +67,14 @@ class CoverageAnalyzerAgent(BaseAgent):
             self.history_processor.extend_user_msg(content=reminder)
             return
         coverage_guidance_dir = get_project_coverage_guidance_dir()
-        self.coverage_guidance_files = [file for file in os.listdir(coverage_guidance_dir) if file.startswith("harness_") and file.endswith("_guidance.md")]
+        self.coverage_guidance_files = [file for file in os.listdir(coverage_guidance_dir) if file.startswith("cov_guidance_") and file.endswith(".md")]
 
     @override
     def is_agent_task_completed(self) -> bool:
         if self.can_return_early:
             return True
         coverage_guidance_dir = get_project_coverage_guidance_dir()
-        current_files = [file for file in os.listdir(coverage_guidance_dir) if file.startswith("harness_") and file.endswith("_guidance.md")]
+        current_files = [file for file in os.listdir(coverage_guidance_dir) if file.startswith("cov_guidance_") and file.endswith(".md")]
         new_files = set(current_files) - set(self.coverage_guidance_files)
         
         if len(new_files) == 0:
@@ -88,7 +88,7 @@ class CoverageAnalyzerAgent(BaseAgent):
         if self.can_return_early:
             return exit_reason + "\n[*] No fuzzer in plateau state and is able to extract code coverage. Please directly exit and report this issue to let HarnessAgent or FuzzerAgent to continue."
         coverage_guidance_dir = get_project_coverage_guidance_dir()
-        current_files = [file for file in os.listdir(coverage_guidance_dir) if file.startswith("harness_") and file.endswith("_guidance.md")]
+        current_files = [file for file in os.listdir(coverage_guidance_dir) if file.startswith("cov_guidance_") and file.endswith(".md")]
         new_files = set(current_files) - set(self.coverage_guidance_files)
         if len(new_files) == 0:
             return exit_reason + "\n[*] No new coverage guidance files recorded in this round of analysis."

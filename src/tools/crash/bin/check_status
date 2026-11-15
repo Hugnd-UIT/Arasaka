@@ -120,7 +120,7 @@ def check_directory() -> bool:
         TASKs.add_sub_task(task_entry)
         return False
     entities = os.listdir(project_dir)
-    available_entries = [".cache", ".vms", ".git", ".gitignore", "build", "crash_reports", "crashes", "dictionary", "seeds", "fuzzers", "harnesses", "coverage_guidance"]
+    available_entries = [".cache", ".vms", ".git", ".gitignore", "build", "crashes", "dictionary", "seeds", "fuzzers", "harnesses", "coverage"]
     for entity in entities:
         if entity not in available_entries:
             task_entry = TaskEntry("Check Output Directory Structures", Status.FAILED, f"Unknown entity detected in the $OUTPUT directory: `{entity}`. Please don't corrupt the directory structure. The available entities are: {available_entries}.")
@@ -477,7 +477,7 @@ def check_coverage_guidance() -> bool:
         return False
     all_harnesses = ProjectUtils.list_all_harnesses()
     next_harness_id = len(all_harnesses)
-    next_guidance_file = os.path.join(coverage_guidance_dir, f"harness_{next_harness_id:03d}_guidance.md")
+    next_guidance_file = os.path.join(coverage_guidance_dir, f"cov_guidance_{next_harness_id:03d}.md")
     if not os.path.exists(next_guidance_file):
         task_entry = TaskEntry("Check Coverage Guidance", Status.PENDING, f"The coverage guidance file for the next harness is not found: {next_guidance_file}. Please generate the coverage guidance file and try again.")
         TASKs.add_sub_task(task_entry)

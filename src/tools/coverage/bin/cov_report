@@ -19,7 +19,7 @@ def read_with_timeout(timeout_sec):
 
 def generate_coverage_report(harness_id: int, content: str) -> None:
     coverage_guidance_dir = ProjectUtils.get_project_coverage_guidance_dir()
-    next_guidance_file = os.path.join(coverage_guidance_dir, f"harness_{harness_id:03d}_guidance.md")
+    next_guidance_file = os.path.join(coverage_guidance_dir, f"cov_guidance_{harness_id:03d}.md")
     with open(next_guidance_file, 'w') as f:
         f.write(content)
     print(f"[+] The coverage guidance for the next harness [{harness_id:03d}] has been recorded in: {next_guidance_file}")

@@ -80,8 +80,8 @@ $OUTPUT/
 │       ├── fuzzing_corpus/# Fuzzing corpus owned by the fuzzer
 │       ├── crashes/       # Fuzzing crashes
 │       └── logs/          # Fuzzing logs
-├── coverage_guidance/     # Coverage guidance for the fuzzing campaign
-└── crash_reports/         # Crash analysis reports
+├── coverage/              # Coverage guidance for the fuzzing campaign (cov_guidance_<id>.md)
+└── crashes/               # Crash analysis reports
     ├── library_bug/       # Library vulnerabilities
     └── harness_bug/       # Harness misuse/errors
 ```
